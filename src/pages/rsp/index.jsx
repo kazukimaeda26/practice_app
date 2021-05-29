@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Hand from "../../components/hand";
 export default class Index extends React.Component {
   constructor() {
     super();
@@ -8,8 +8,13 @@ export default class Index extends React.Component {
       selectHand: 0,
     }
   }
+
+  handleOnClick = (val) => {
+    this.setState({selectHand: val});
+  }
+
   render() {
-    const imgSize = 100;
+    const handTypes = [0,1,2]
     return (
       <div
         style={{
@@ -20,51 +25,9 @@ export default class Index extends React.Component {
       >
         <h1>ジャンケンページ</h1>
         <div style={{ display: "flex" }}>
-          <button
-            onClick={()=> {
-              this.setState({selectHand: 0});
-            }}
-          >
-            <img
-              src={`images/rock.jpeg`}
-              alt="rock"
-              style={{
-                height: imgSize,
-                width: imgSize,
-                opacity: this.state.selectHand === 0 ? 1.0 : 0.3,
-              }}
-            />
-          </button>
-          <button
-            onClick={()=> {
-            this.setState({selectHand: 1});
-            }}
-          >
-            <img
-              src={`images/paper.jpeg`}
-              alt="rock"
-              style={{
-                height: imgSize,
-                width: imgSize,
-                opacity: this.state.selectHand === 1 ? 1.0 : 0.3,
-              }}
-            />
-          </button>
-          <button
-            onClick={()=> {
-              this.setState({selectHand: 2});
-            }}
-          >
-            <img
-              src={`images/scissors.jpeg`}
-              alt="rock"
-              style={{
-                height: imgSize,
-                width: imgSize,
-                opacity: this.state.selectHand === 2 ? 1.0: 0.3,
-              }}
-            />
-          </button>
+          {handTypes.map((handType, index) => (
+            <Hand selectHand={handType} selectedHand={this.state.selectHand} clickHand={this.handleOnClick} key = {index} />
+          ))}
         </div>
         <Link to="/">
           <h1>ジャンケンを終了する</h1>
