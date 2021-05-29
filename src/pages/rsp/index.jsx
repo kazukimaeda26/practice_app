@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default class Index extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      selectHand: 0,
+    }
+  }
   render() {
     const imgSize = 100;
     return (
@@ -16,7 +22,7 @@ export default class Index extends React.Component {
         <div style={{ display: "flex" }}>
           <button
             onClick={()=> {
-              console.log('グーがクリックされました。');
+              this.setState({selectHand: 0});
             }}
           >
             <img
@@ -30,7 +36,7 @@ export default class Index extends React.Component {
           </button>
           <button
             onClick={()=> {
-              console.log('パーがクリックされました。');
+            this.setState({selectHand: 1});
             }}
           >
             <img
@@ -44,7 +50,7 @@ export default class Index extends React.Component {
           </button>
           <button
             onClick={()=> {
-              console.log('チョキがクリックされました。');
+              this.setState({selectHand: 2});
             }}
           >
             <img
@@ -59,6 +65,7 @@ export default class Index extends React.Component {
         </div>
         <Link to="/">
           <h1>ジャンケンを終了する</h1>
+          <h4>戦績が発表されます。</h4>
         </Link>
 
       </div>
