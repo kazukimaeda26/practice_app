@@ -1,13 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Hand from "../../components/hand";
-
-
-enum HandType {
-  Rock,
-  Scissors,
-  Paper
-}
+import { HandType } from "../../interfaces/handType";
 
 interface State {
   selectHand: HandType;
@@ -21,7 +15,7 @@ export default class Index extends React.Component<{}, State> {
     }
   }
 
-  handleOnClick = (val: any): void => {
+  handleOnClick = (val: HandType): void => {
     this.setState({selectHand: val});
   }
 

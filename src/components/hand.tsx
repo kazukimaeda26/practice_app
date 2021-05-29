@@ -1,11 +1,5 @@
 import React from "react";
-
-enum HandType {
-  Rock,
-  Scissors,
-  Paper
-}
-
+import { HandType } from "../interfaces/handType";
 interface Props {
   selectHand: HandType;
   clickHand: (val: HandType) => void;
