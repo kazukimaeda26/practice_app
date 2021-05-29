@@ -37,8 +37,8 @@ export default class Index extends React.Component<{}, State> {
       >
         <h1>ジャンケンページ</h1>
         <div style={{ display: "flex" }}>
-          {handTypes.map((handType, index) => (
-            <Hand selectHand={handType} selectedHand={this.state.selectHand} clickHand={this.handleOnClick} key = {index} />
+          {handTypes.map((handType: HandType) => (
+            <Hand selectHand={handType} selectedHand={this.state.selectHand} clickHand={this.handleOnClick} />
           ))}
         </div>
         <Link to="/">

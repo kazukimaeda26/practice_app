@@ -1,6 +1,17 @@
 import React from "react";
 
-export default class Hand extends React.Component {
+enum HandType {
+  Rock,
+  Scissors,
+  Paper
+}
+
+interface Props {
+  selectHand: HandType;
+  clickHand: (val: HandType) => void;
+  selectedHand: HandType;
+}
+export default class Hand extends React.Component<Props, {}> {
   render() {
     const imgSize = 100;
     const handTypes = ["rock", "scissors", "paper"]
