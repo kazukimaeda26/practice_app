@@ -14,7 +14,11 @@ export default class Index extends React.Component {
       >
         <h1>ジャンケンページ</h1>
         <div style={{ display: "flex" }}>
-          <button>
+          <button
+            onClick={()=> {
+              console.log('グーがクリックされました。');
+            }}
+          >
             <img
               src={`images/rock.jpeg`}
               alt="rock"
@@ -24,7 +28,11 @@ export default class Index extends React.Component {
               }}
             />
           </button>
-          <button>
+          <button
+            onClick={()=> {
+              console.log('パーがクリックされました。');
+            }}
+          >
             <img
               src={`images/paper.jpeg`}
               alt="rock"
@@ -34,7 +42,11 @@ export default class Index extends React.Component {
               }}
             />
           </button>
-          <button>
+          <button
+            onClick={()=> {
+              console.log('チョキがクリックされました。');
+            }}
+          >
             <img
               src={`images/scissors.jpeg`}
               alt="rock"
