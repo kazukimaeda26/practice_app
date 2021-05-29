@@ -36,6 +36,11 @@ export default class Index extends React.Component<Props, State> {
       this.confirmResult(this.state.selectHand, enemyHand);
     }
   }
+  componentWillUnmount() {
+    alert(
+      `【戦績】\n ${this.state.battleCount}戦中、${this.state.winCount}勝でした。`
+    );
+  }
 
   handleOnClick = (val: HandType): void => {
     this.setState({ battleCount: this.state.battleCount + 1})
