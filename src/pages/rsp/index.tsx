@@ -3,15 +3,29 @@ import { Link } from "react-router-dom";
 import Hand from "../../components/hand";
 import { HandType } from "../../interfaces/handType";
 
+interface Props {}
 interface State {
   selectHand: HandType;
+  enemyHand: HandType;
 }
 
-export default class Index extends React.Component<{}, State> {
-  constructor(props: {}) {
+export default class Index extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       selectHand: HandType.Rock,
+      enemyHand: HandType.Rock,
+    }
+  }
+
+  componentDidMount() {
+    alert("手を選ぶと、勝敗が決まるよ。");
+  }
+
+  componentDidUpdate(prevPrors: Props, prevState: State) {
+    if(prevState.selectHand !== this.state.selectHand) {
+      const enemyHand: HandType = Math.floor(Math.random()*3);
+      this.setState({ enemyHand: enemyHand });
     }
   }
 
