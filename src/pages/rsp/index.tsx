@@ -2,6 +2,7 @@ import React, {useEffect, useState}from "react";
 import { Link } from "react-router-dom";
 import Hand from "../../components/hand";
 import { HandType } from "../../interfaces/handType";
+import { useRspBattle } from "../../hooks/useRspBattle";
 
 export default function Index() {
   const handTypes: HandType[] = [HandType.Rock, HandType.Scissors, HandType.Paper];
@@ -9,12 +10,9 @@ export default function Index() {
   const battleCountVal = React.useRef(0);
   const winCountVal = React.useRef(0);
   
+  const [resultString, winCount, confirmResult] = useRspBattle();
   const [selectHand, setSelectHand] = useState<HandType>(HandType.Rock);
   const [enemyHand, setEnemyHand] = useState<HandType>(HandType.Rock);
-  const [resultString, setResultString] = useState<string>(
-    "最初はグー、ジャンケン"
-  );
-  const [winCount, setWinCount] = useState<number>(0);
   const [battleCount, setBattleCount] = useState<number>(0);
 
   useEffect(() => {
@@ -37,17 +35,6 @@ export default function Index() {
   const handleOnClick = (val: HandType): void => {
     setBattleCount(battleCount + 1);
     setSelectHand(val);
-  }
-  const confirmResult = (selectHand: HandType, enemyHand: HandType): void => {
-    const result: number = (selectHand - enemyHand + 3) % 3;
-    if(result === 0){
-      setResultString("あいこで");
-    } else if (result === 2) {
-      setResultString("勝ち");
-      setWinCount(winCount+1);
-    } else {
-      setResultString("負け");
-    }
   }
 
   return (
